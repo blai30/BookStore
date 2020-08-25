@@ -52,6 +52,9 @@ namespace BookStore.API
 
             // Dependency injection extension method
             services.ResolveDependencies();
+
+            // Connect to front-end
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -79,6 +82,9 @@ namespace BookStore.API
             {
                 endpoints.MapControllers();
             });
+
+            // Connect front-end
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
         }
     }
 }

@@ -1,0 +1,14 @@
+<div class="jumbotron">
+  <form class="col-md-5 form" #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+    <h2 class="text-center text-primary">Category</h2>
+    <input type="hidden" name="id" #id="ngModel" [(ngModel)]="formData.id">
+    <div class="form-group">
+      <input class="form-control" name="name" #name="ngModel" [(ngModel)]="formData.name" required [ngClass]="{'is-invalid': form.controls['name']?.invalid && form.controls['name']?.touched}" placeholder="Category">
+      <div class="invalid-feedback" *ngIf="name.invalid && name.touched">Please specify a category.</div>
+    </div>
+    <div class="form-group text-center">
+      <button class="btn btn-success mr-2" [disabled]="form.invalid" type="submit">Save</button>
+      <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+</div>
